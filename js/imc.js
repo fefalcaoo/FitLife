@@ -12,7 +12,10 @@ function calculateIMC(event) {
     const weight = parseInt(weightInput.value)
     const height = parseFloat(heightInput.value)
 
-    if (weight <= 0 || height <= 0) {
+    console.log("O peso é um número", isNaN(weight))
+    console.log("A altura é um número", isNaN(height))
+
+    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
         alert("Por favor, preencha peso e altura com valores válidos")
         return
     }
@@ -36,10 +39,11 @@ function calculateIMC(event) {
         color = '#d63031'
     }
 
-
-    valueText.innerText = imc
+    valueText.innerText = imc.toFixed(2)
     valueText.style.color = color
 
     descText.innerText = classification
     descText.style.color = color
+
+    resultBox.classList.add('show')
 }
